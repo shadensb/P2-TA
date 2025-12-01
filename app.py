@@ -16,10 +16,13 @@ plt.rcParams['figure.max_open_warning'] = 100
 # 1.DATA CLEANING AND PREPARATION FUNCTIONS
 
 @st.cache_data
-def load_and_prepare_data(file_path='shadensb/p2-ta/main/titles.csv'):
+def load_and_prepare_data(file_path='titles.csv'):
+    GITHUB_CSV_URL = 'https://raw.githubusercontent.com/amirtds/kaggle-netflix-tv-shows-and-movies/main/titles.csv'
     try:
-        df = pd.read_csv(file_path)
-    except FileNotFoundError:
+        df = pd.read_csv(GITHUB_CSV_URL)
+    except Exception as e:
+        # If loading fails (e.g., URL issue, network error), raise a detailed error
+        st.error(f"Failed to load data from GitHub URL. Check link or connection: {e}")
         return pd.DataFrame(), 0, 0 
 
     # Filter Movies
