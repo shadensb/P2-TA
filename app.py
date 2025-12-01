@@ -16,7 +16,7 @@ plt.rcParams['figure.max_open_warning'] = 100
 # 1.DATA CLEANING AND PREPARATION FUNCTIONS
 
 @st.cache_data
-def load_and_prepare_data(file_path='shadensb/p2-ta/main/app.py'):
+def load_and_prepare_data(file_path='shadensb/p2-ta/main/titles.csv'):
     try:
         df = pd.read_csv(file_path)
     except FileNotFoundError:
